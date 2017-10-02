@@ -1,0 +1,24 @@
+<h1>Welcome <%= @user.name %></h1>
+
+
+<form action= "/groups_list" method="post">
+  <div>
+    <label for="interest">What are you interests?</label>
+    <input name="interest" type="text">
+  </div>
+  <div>
+    <label for="description">Describe your group goals.</label>
+    <input name="description" type="text">
+  </div>
+  <button type='submit'>Submit</button>
+</form>
+
+<h2>Groups:</h2>
+
+ <% if @groups.any? %>
+ <% @groups.interest.each do |group| %>
+<p> <%= group.interest %></p>
+   <% end %>
+   <% else %>
+    <h3> There are currently no groups. Create one now! </h3>
+    <% end %>
