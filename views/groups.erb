@@ -1,13 +1,13 @@
-<h1>Welcome <%= @user.name %></h1>
+<h1>Welcome:</h1>
+<h2>To Begin Creating a Community, Create Your Own Group</h2>
 
-
-<form action= "/groups_list" method="post">
+<form action= "/create_group" method="post">
   <div>
-    <label for="interest">What are you interests?</label>
-    <input name="interest" type="text">
+    <label for="group">Name Your Group:</label>
+    <input name="group" type="text">
   </div>
   <div>
-    <label for="description">Describe your group goals.</label>
+    <label for="description">In a Few Short Words, Describe Your Group:</label>
     <input name="description" type="text">
   </div>
   <button type='submit'>Submit</button>
@@ -16,9 +16,10 @@
 <h2>Groups:</h2>
 
  <% if @groups.any? %>
- <% @groups.interest.each do |group| %>
-<p> <%= group.interest %></p>
+ <h2>Click on a Group To Learn More About It!</h2>
+ <% @groups.each do |g| %>
+<p><a href='/services/<%= g.id %>'><%= g.interest %></a></p>
    <% end %>
    <% else %>
-    <h3> There are currently no groups. Create one now! </h3>
+    <h3>There are currently no groups. Create one now!</h3>
     <% end %>
