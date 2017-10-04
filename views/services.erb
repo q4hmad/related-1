@@ -7,14 +7,13 @@
 <p><a href='/service_info/<%= s.id %>'><%= s.location %></a></p>
 <% end %>
 <% else %>
-<% end %>
 <h3>No Services Have Been Offered Yet</h3>
+<% end %>
 <br>
 <h2>Connect With Users In This Group:</h2>
 <% if @group.users.any? %>
-<h2>Connect With Users In This Group:</h2>
 <% @group.users.each do |u| %>
-<p><a href='/user_info/<%= u.id %></a>'<%= u.name %></a></p>
+<p><a href='/user_info/<%= u.id %>'><%= u.name %></a></p>
 <% end %>
 <% else %>
 <h3>Currently Nobody Has Joined The Group!</h3>

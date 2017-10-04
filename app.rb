@@ -68,3 +68,13 @@ post('/create_user/:id') do
   @group.users.push(@user)
   erb(:services)
 end
+
+get('/service_info/:id') do
+  @service = Service.find(params.fetch('id').to_i)
+  erb(:service_info)
+end
+
+get('/user_info/:id') do
+  @user = User.find(params.fetch('id').to_i)
+  erb(:user_info)
+end
