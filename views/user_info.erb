@@ -1,3 +1,17 @@
 
-<%= @user.name %><br>
-<%= @user.email %>
+<h1><%= @user.name %></h1><br>
+<h3 class='margin'>Tell A Little More About Yourself:</h3>
+<form action='/more_info/<%= @user.id %>' method='post'>
+  <div>
+    <label for="information" class="form-control form-rounded" rows="3">Who Are You, Really...</label>
+    <input name='information' type='text' class='form-control form-founded' placeholder='Text input'>
+  </div>
+  <br>
+  <button type='text' class='btn btn-default'>Submit</button>
+</form>
+<div id='border' class='margin'>
+<h2>Contact info: <%= @user.email %></h2>
+<% @user.each do |u| %>
+<h3><%= u.information %></h3>
+<% end %>
+</div>

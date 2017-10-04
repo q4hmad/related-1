@@ -4,23 +4,21 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 get('/') do
-  @users = User.all()
+  @users = User.all
   @groups = Group.all
-  erb(:index)
+  erb(:groups)
 end
 
-post('/entry') do
-@groups = Group.all
-name = params['name']
-address = params['address']
-email = params['email']
-@user = User.new({:name => name, :address => address, :email => email})
-if @user.address = '1000 Vista Ave'
-erb(:groups)
-else
-  (:deny)
-  end
-end
+# post('/entry') do
+# @groups = Group.all
+# address = params['address']
+# @index = Index.new({:address => address})
+# if @index.address = '1000 Vista Ave'
+# erb(:groups)
+# else
+#   (:deny)
+#   end
+# end
 
 get('/group/:id') do
   @group = Group.find(params[:id])
@@ -63,7 +61,7 @@ post('/create_user/:id') do
   @group = Group.find(params.fetch('id').to_i)
   name = params['name']
   email = params['email']
-  @user = User.new({:name => name, :email => email})
+  @user = User.new({:name => name, :email => email, :address => nil, :information => nil})
   @user.save
   @group.users.push(@user)
   erb(:services)
@@ -76,5 +74,14 @@ end
 
 get('/user_info/:id') do
   @user = User.find(params.fetch('id').to_i)
+  erb(:user_info)
+end
+
+post('/more_info/:id') do
+  @user = User.find(params.fetch('id').to_i)
+  information = params['information']
+  @user_info = User.new({:name => nil, :email => nil, :address => nil, :information => information})
+  @user_info.save
+  @users = User.all
   erb(:user_info)
 end

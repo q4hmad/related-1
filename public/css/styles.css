@@ -6,12 +6,14 @@ border-radius: 1rem;
 background-color: #FA3912;
 padding: 10px;
 margin: 40px;
+border-radius: 25px;
 }
 
 .jumbotron p {
   text-align: center;
   font-size: 150px;
   font-family: Brush Script Std, Brush Script MT, cursive;
+  color: #563321;
 }
 
 img {
@@ -32,4 +34,31 @@ img {
 
 body {
   font-family: monospace;
+  color: brown;
+}
+
+#border {
+  border-radius: 25px;
+  border-style: solid;
+  border-width: medium;
+  border-color: #563321;
+  padding: 20px;
+}
+
+.centerMargin {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.table {
+  border-collapse: collapse;
+  border-radius: 25px;
+}
+.table, td, th {
+  border: 5px solid #563321;
+}
+
+#margin {
+  margin-top: 100px;
 }

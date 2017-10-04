@@ -10,11 +10,11 @@ class Group < ActiveRecord::Base
 
 
   def first_letter
-   array = self.brand.split
+   array = self.interest.split
    array.each do |t|
      t.capitalize!
    end
-   self.brand = array.join(' ')
+   self.interest = array.join(' ')
   end
 
 end

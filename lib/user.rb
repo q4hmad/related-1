@@ -3,21 +3,10 @@ class User < ActiveRecord::Base
 
   has_many :services, through: :communities
   has_many :groups, through: :communities
-  validates(:name, {:presence => true, :length => {:maximum => 35}})
-  validates(:email, {:presence => true, :length => {:maximum => 50}})
-  validates(:address, {:presence => true, :length => {:maximum => 75}})
-  before_save(:name, :first_letter)
 
-
- def first_letter
-   array = self.brand.split
-   array.each do |t|
-     t.capitalize!
-   end
-   self.brand = array.join(' ')
- end
-
-
+  validates(:name, {:length => {:maximum => 35}})
+  validates(:email, {:length => {:maximum => 50}})
+  
   # validates(:address, {:verify => true})
   #
   # def verify

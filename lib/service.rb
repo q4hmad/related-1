@@ -6,5 +6,5 @@ class Service < ActiveRecord::Base
 
   validates(:location, {:presence => true, :length => {:maximum => 50}})
   validates(:detail, {:presence => true, :length => {:maximum => 150}})
-  
+
 end
