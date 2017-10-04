@@ -1,5 +1,5 @@
-<h1>Welcome:</h1>
-<h2>To Begin Creating a Community, Create Your Own Group</h2>
+
+<h2 class='center'>To Begin Creating a Community, Create Your Own Group</h2>
 
 <form action= "/create_group" method="post">
   <div>
@@ -11,10 +11,11 @@
     <input name="description" type="text">
   </div>
   <button type='submit'>Submit</button>
+  <br>
 </form>
-
+<br><br>
 <h2>Groups:</h2>
-
+<br>
  <% if @groups.any? %>
  <h2>Click on a Group To Learn More About It!</h2>
  <% @groups.each do |g| %>

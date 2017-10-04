@@ -6,6 +6,6 @@ describe('viewing home and verify residency', {:type => :feature}) do
 
     fill_in('address', :with => "1000 Vista Ave")
     click_button('Submit')
-    expect(page).to have_content("Welcome")
+    expect(page).to have_content("To Begin")
   end
 end

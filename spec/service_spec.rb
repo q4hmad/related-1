@@ -1,3 +1,4 @@
+require('./app')
 require("spec_helper")
 
 

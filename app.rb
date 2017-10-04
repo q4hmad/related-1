@@ -15,7 +15,7 @@ name = params['name']
 address = params['address']
 email = params['email']
 @user = User.new({:name => name, :address => address, :email => email})
-if @user.save
+if @user.address = '1000 Vista Ave'
 erb(:groups)
 else
   (:deny)
