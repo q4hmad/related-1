@@ -7,8 +7,8 @@
   <div class='col-md-6'>
     <h3 class='margin'>Click on Services Offered To Learn More About The Service:</h3>
       <ul>
-        <% if @group.services.any? %>
-        <% @group.services.each do |s| %>
+        <% if @services.any? %>
+        <% @services.each do |s| %>
         <p><li><a href='/service_info/<%= s.id %>'><%= s.location %></a></li></p>
         <% end %>
       </ul>

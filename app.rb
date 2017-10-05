@@ -47,13 +47,11 @@ end
 post('/create_service/:id') do
   @services = Service.all
   @user = User.find(params.fetch('id').to_i)
-  @group = Group.find(params.fetch('id').to_i)
   location = params['service']
   detail = params['detail']
   @service = Service.new({:location => location, :detail => detail})
   @service.save
   @user.services.push(@service)
-  @group.services.push(@service)
   erb(:congrats)
 end
 
@@ -70,8 +68,8 @@ post('/create_user/:id') do
 end
 
 get('/service_info/:id') do
-  @service = Service.find(params.fetch('id').to_i)
   @user = User.find(params.fetch('id').to_i)
+  @service = Service.find(params.fetch('id').to_i)
   erb(:service_info)
 end
 
@@ -91,7 +89,6 @@ end
 
 get('/services_entered/:id') do
   @user = User.find(params.fetch('id').to_i)
-  @group = Group.find(params.fetch('id').to_i)
   erb(:user_info)
 end
 
