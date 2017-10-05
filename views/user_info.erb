@@ -2,6 +2,7 @@
 <h1><%= @user.name %></h1><br>
 <h3 class='margin'>Tell A Little More About Yourself:</h3>
 <form action='/more_info/<%= @user.id %>' method='post'>
+  <input name="_method" type="hidden" value="patch">
   <div>
     <label for="information" class="form-control form-rounded" rows="3">Who Are You, Really...</label>
     <input name='information' type='text' class='form-control form-founded' placeholder='Text input'>
@@ -11,7 +12,21 @@
 </form>
 <div id='border' class='margin'>
 <h2>Contact info: <%= @user.email %></h2>
-<% @user.each do |u| %>
-<h3><%= u.information %></h3>
-<% end %>
+<h3><%= @user.information %></h3>
 </div>
+<h2 class='margin'>Add A Service You Would Like To Offer To The Group:</h2>
+<form action='/create_service/<%= @user.id %>' method='post'>
+  <div>
+    <label for="service" class="form-control form-rounded" rows="3">Add A Service:</label>
+    <input name='service' type='text' class='form-control form-founded' placeholder='Text input'>
+  </div>
+  <br>
+  <div>
+    <label for="detail" class="form-control form-rounded" rows="3">Add Details Of Your Service:</label>
+    <input name='detail' type='text' class='form-control form-founded' placeholder='Text input'>
+  </div>
+  <br>
+  <button type='submit'>Submit</button>
+</form>
+
+<p class='margin'><a href='/groups_user'>Return To Homepage</a></p>

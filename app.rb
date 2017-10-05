@@ -9,16 +9,16 @@ get('/') do
   erb(:groups)
 end
 
-# post('/entry') do
-# @groups = Group.all
-# address = params['address']
-# @index = Index.new({:address => address})
-# if @index.address = '1000 Vista Ave'
-# erb(:groups)
-# else
-#   (:deny)
-#   end
-# end
+post('/entry') do
+@groups = Group.all
+address = params['address']
+@user = User.new({:address => address})
+if @user.address = '1000 Vista Ave'
+erb(:groups)
+else
+  (:deny)
+  end
+end
 
 get('/group/:id') do
   @group = Group.find(params[:id])
@@ -38,21 +38,22 @@ post('/create_group') do
 end
 
 get('/services/:id') do
-  id = params[:id]
   @group = Group.find(params.fetch('id').to_i)
+  @services = Service.all
   erb(:services)
 end
 
 post('/create_service/:id') do
   @services = Service.all
-  @users = User.all
+  @user = User.find(params.fetch('id').to_i)
   @group = Group.find(params.fetch('id').to_i)
   location = params['service']
   detail = params['detail']
   @service = Service.new({:location => location, :detail => detail})
   @service.save
+  @user.services.push(@service)
   @group.services.push(@service)
-  erb(:services)
+  erb(:congrats)
 end
 
 post('/create_user/:id') do
@@ -69,6 +70,7 @@ end
 
 get('/service_info/:id') do
   @service = Service.find(params.fetch('id').to_i)
+  @user = User.find(params.fetch('id').to_i)
   erb(:service_info)
 end
 
@@ -77,11 +79,22 @@ get('/user_info/:id') do
   erb(:user_info)
 end
 
-post('/more_info/:id') do
+patch('/more_info/:id') do
+  @users = User.all
   @user = User.find(params.fetch('id').to_i)
   information = params['information']
   @user_info = User.new({:name => nil, :email => nil, :address => nil, :information => information})
   @user_info.save
-  @users = User.all
   erb(:user_info)
+end
+
+get('/services_entered/:id') do
+  @user = User.find(params.fetch('id').to_i)
+  @group = Group.find(params.fetch('id').to_i)
+  erb(:user_info)
+end
+
+get('/groups_user') do
+  @groups = Group.all
+  erb(:groups)
 end
