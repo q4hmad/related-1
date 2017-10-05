@@ -1,5 +1,6 @@
 require("bundler/setup")
 Bundler.require(:default)
+require('pry')
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
@@ -80,11 +81,11 @@ get('/user_info/:id') do
 end
 
 patch('/more_info/:id') do
-  @users = User.all
+  @user = User.all
   @user = User.find(params.fetch('id').to_i)
   information = params['information']
   @user_info = User.new({:name => nil, :email => nil, :address => nil, :information => information})
-  @user_info.save
+  @user.update({:information => @user_info.information})
   erb(:user_info)
 end
 
