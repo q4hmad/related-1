@@ -6,16 +6,14 @@ class User < ActiveRecord::Base
 
   validates(:name, {:length => {:maximum => 35}})
   validates(:email, {:length => {:maximum => 50}})
-  
-  # validates(:address, {:verify => true})
-  #
-  # def verify
-  #   address_input = self.address
-  #   address = '1000 Vista Avenue'
-  #   if address == address_input
-  #     return true
-  #   else false
-  #   end
-  # end
+  before_save(:name, :first_letter)
+
+  def first_letter
+   array = self.interest.split
+   array.each do |t|
+     t.capitalize!
+   end
+   self.interest = array.join(' ')
+  end
 
 end

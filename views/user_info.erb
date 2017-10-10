@@ -14,19 +14,5 @@
 <h2>Contact info: <%= @user.email %></h2>
 <h3><%= @user.information %></h3>
 </div>
-<h2 class='margin'>Add A Service You Would Like To Offer To The Group:</h2>
-<form action='/create_service/<%= @user.id %>' method='post'>
-  <div>
-    <label for="service" class="form-control form-rounded" rows="3">Add A Service:</label>
-    <input name='service' type='text' class='form-control form-founded' placeholder='Text input'>
-  </div>
-  <br>
-  <div>
-    <label for="detail" class="form-control form-rounded" rows="3">Add Details Of Your Service:</label>
-    <input name='detail' type='text' class='form-control form-founded' placeholder='Text input'>
-  </div>
-  <br>
-  <button type='submit'>Submit</button>
-</form>
 
 <p class='margin'><a href='/groups_user'>Return To Homepage</a></p>

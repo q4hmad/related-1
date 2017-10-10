@@ -2,11 +2,12 @@
   <tr>
     <th><h3>Service:</h3></th>
     <th><h3>Details:</h3></th>
-    <th><h3>Contact:</h3></th>
+    <th><h3>Contact Details:</h3></th>
   </tr>
   <tr>
     <td><h3><%= @service.location %></h3></td>
     <td><h3><%= @service.detail %></h3></td>
-    <td><h3><a href='/user_info/<%= @user.id %>'><%= @user.name %></a></h3></td>
+    <td><h3><%= @service.servicer %></h3></td>
   <tr>
 </table>
+<p class='margin'><a href='/groups_user'>Return To Homepage</a></p>
